@@ -9,8 +9,8 @@ This is a Simple REST API that accepts a name, queries three external prediction
 - Node.js + Express
 - PostgreSQL (`pg`)
 
-- **GitHub Repository:** `https://github.com/MyITjournal/hng14-task-2`
-- **Live API Base URL:** `https://.vercel.app`
+- **GitHub Repository:** `https://github.com/MyITjournal/hng14-task2`
+- **Live API Base URL:** `https://classifynames.vercel.app/`
 
 ---
 
@@ -130,7 +130,7 @@ Calls Genderize, Agify, and Nationalize in parallel for the given name, applies 
 | `sample_size`         | number | Genderize data points used                                          |
 | `age`                 | number | Estimated age from Agify                                            |
 | `age_group`           | string | `child` (0–12), `teenager` (13–19), `adult` (20–59), `senior` (60+) |
-| `country_id`          | string | Country code (highest probability)               |
+| `country_id`          | string | Country code (highest probability)                                  |
 | `country_probability` | number | Nationalize confidence score (0–1)                                  |
 | `created_at`          | string | UTC ISO 8601 timestamp                                              |
 
@@ -253,4 +253,4 @@ Set the following environment variables in your Vercel project settings:
 | `DATABASE_URL` | PostgreSQL connection string                        |
 | `DATABASE_SSL` | Set to `true` for hosted providers (Supabase, Neon) |
 
-Live URL: `https://`
+Live URL: `https://classifynames.vercel.app`
