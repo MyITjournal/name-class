@@ -28,11 +28,6 @@ sequelize.define(
     tableName: "db_profiles",
     timestamps: false,
     indexes: [
-      {
-        unique: true,
-        fields: [Sequelize.fn("LOWER", Sequelize.col("name"))],
-        name: "db_profiles_name_unique",
-      },
       { fields: ["gender"], name: "db_profiles_gender_idx" },
       { fields: ["age_group"], name: "db_profiles_age_group_idx" },
       { fields: ["country_id"], name: "db_profiles_country_id_idx" },
@@ -43,11 +38,16 @@ sequelize.define(
 export const connectDB = async () => {
   try {
     await sequelize.authenticate();
-    await sequelize.sync();
     console.log("Database connected");
   } catch (error) {
-    console.error("Database error:", error.message);
+    console.error("Database connection error:", error.message);
     process.exit(1);
+  }
+
+  try {
+    await sequelize.sync();
+  } catch (error) {
+    console.warn("Schema sync warning (non-fatal):", error.message);
   }
 };
 
